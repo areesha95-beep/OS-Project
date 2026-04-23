@@ -1,0 +1,3 @@
+page_size=4096
+ram_size=65536
+tlb_size=8
