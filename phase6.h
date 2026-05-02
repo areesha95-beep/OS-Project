@@ -31,24 +31,24 @@ public:
             freeFrames.push(i);
     }
 
-    // ── 1. Check if any free frame is available ──────────────
+    //1. Check if any free frame is available
     bool hasFreeFrame() {
         return !freeFrames.empty();
     }
 
-    // ── 2. Get a free frame from the list ───────────────────
+    //2. Get a free frame from the list
     unsigned int getFreeFrame() {
         unsigned int frame = freeFrames.front();
         freeFrames.pop();
         return frame;
     }
 
-    // ── 3. FIFO eviction — pick oldest loaded page as victim ─
+    // 3. FIFO eviction — pick oldest loaded page as victim 
     unsigned int evictFIFO() {
         unsigned int victimVPN = fifoQueue.front();
         fifoQueue.pop();
 
-        // Check dirty bit — if dirty write to disk first
+        // Check dirty bit, if dirty write to disk first
         if (pt->isDirty(victimVPN)) {
             cout << "  [DISK WRITE] VPN " << victimVPN << " is dirty, writing back to disk\n";
             diskWrites++;
@@ -65,7 +65,7 @@ public:
         return freedFrame;
     }
 
-    // ── 4. Handle a page fault for a given VPN ───────────────
+    //4. Handle a page fault for a given VPN 
     unsigned int handleFault(unsigned int vpn) {
         pageFaults++;
         cout << "  [PAGE FAULT] VPN " << vpn << "\n";
@@ -73,12 +73,12 @@ public:
         unsigned int frame;
 
         if (hasFreeFrame()) {
-            // Free frame available — use it directly
+            // Free frame available, use it directly
             frame = getFreeFrame();
             cout << "  [FREE FRAME] Assigned frame " << frame << " to VPN " << vpn << "\n";
         }
         else {
-            // No free frame — run FIFO eviction
+            // No free frame, run FIFO eviction
             cout << "  [NO FREE FRAME] Running FIFO eviction...\n";
             frame = evictFIFO();
         }
@@ -99,13 +99,12 @@ public:
         return frame;
     }
 
-    // ── 5. Print free frame stats ────────────────────────────
+    //5. Print free frame stats 
     void printStats() {
-        cout << "\n  ---- Page Fault Handler Stats ----\n";
+        cout << "\n   Page Fault Handler Stats \n";
         cout << "  Page Faults  : " << pageFaults << "\n";
         cout << "  Disk Reads   : " << diskReads << "\n";
         cout << "  Disk Writes  : " << diskWrites << "\n";
         cout << "  Free Frames  : " << freeFrames.size() << "\n";
-        cout << "  ----------------------------------\n\n";
     }
 };
