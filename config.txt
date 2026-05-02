@@ -1,3 +1,7 @@
-page_size=4096
-ram_size=65536
-tlb_size=8
+physical_ram_size = 268435456
+page_size = 4096
+tlb_size = 4
+tlb_latency = 1
+ram_latency = 10
+disk_latency = 10000000
+replacement_algo = FIFO
