@@ -44,7 +44,7 @@ public:
         return (int)lruList.size() >= capacity;
     }
     void printOrder() {
-        cout << "  LRU Order (MRU → LRU): ";
+        cout << "  LRU Order (MRU = LRU): ";
         for (unsigned int vpn : lruList)
             cout << vpn << " ";
         cout << "\n";
@@ -53,7 +53,7 @@ public:
 class OPTReplacer {
 public:
 
-    unordered_map<unsigned int, vector<int>> future;  // vpn → list of future positions
+    unordered_map<unsigned int, vector<int>> future;  // vpn, list of future positions
     int currentIndex = 0;
 
     // Step 1: read entire trace and record every access position per VPN
