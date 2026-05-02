@@ -1,9 +1,7 @@
 #pragma once
 #include <iostream>
 #include "phase1.h"
-
 using namespace std;
-
 
 //this phase just track all te counters and calculate EAT
 class StatsPhase {
@@ -50,7 +48,7 @@ public:
         totalTime += cfg.tlbLatency + cfg.ramLatency + cfg.diskLatency + cfg.ramLatency;
     }
 
-    //Record a page fault with dirty eviction ───────────
+    //Record a page fault with dirty eviction 
     void recordDirtyFault() {
         totalAccesses++;
         tlbMisses++;
@@ -74,9 +72,7 @@ public:
         return (double)pageFaults / totalAccesses * 100.0;
     }
     void printReport() {
-        cout << "\n========================================\n";
         cout << "       PERFORMANCE REPORT               \n";
-        cout << "========================================\n";
         cout << "  Total Accesses  : " << totalAccesses << "\n";
         cout << "  TLB Hits        : " << tlbHits       << "\n";
         cout << "  TLB Misses      : " << tlbMisses     << "\n";
@@ -84,11 +80,10 @@ public:
         cout << "  Page Faults     : " << pageFaults    << "\n";
         cout << "  Disk Reads      : " << diskReads     << "\n";
         cout << "  Disk Writes     : " << diskWrites    << "\n";
-        cout << "----------------------------------------\n";
+        cout << "\n";
         cout << "  TLB Hit Rate    : " << tlbHitRate()    << " %\n";
         cout << "  Page Fault Rate : " << pageFaultRate() << " %\n";
         cout << "  Total Time      : " << totalTime << " ns\n";
         cout << "  EAT             : " << computeEAT() << " ns\n";
-        cout << "========================================\n\n";
     }
 };
