@@ -4,9 +4,7 @@
 
 using namespace std;
 
-// ────────────────────────────────────────────────────────────
-//  TLBEntry — one row in the TLB cache
-// ────────────────────────────────────────────────────────────
+//  TLBEntry, one row in the TLB cache
 struct TLBEntry {
     bool         valid = false;
     unsigned int vpn = 0;
@@ -14,9 +12,7 @@ struct TLBEntry {
 };
 
 
-// ────────────────────────────────────────────────────────────
-//  TLBPhase — small cache that stores recent VPN→Frame maps
-// ────────────────────────────────────────────────────────────
+//  TLBPhase, small cache that stores recent VPN→Frame maps
 class TLBPhase {
 public:
 
@@ -36,7 +32,7 @@ public:
         delete[] entries;
     }
 
-    // ── 1. Search TLB for a VPN — returns frame if hit ──────
+    // 1. Search TLB for a VPN — returns frame if hit
     //       returns -1 if miss
     int lookup(unsigned int vpn) {
         for (int i = 0; i < size; i++) {
@@ -47,10 +43,10 @@ public:
         return -1;   // TLB MISS
     }
 
-    // ── 2. Insert a VPN→Frame mapping into TLB ───────────────
-    //       uses FIFO to replace oldest entry when full
+    // 2. Insert a VPN, Frame mapping into TLB 
+    // uses FIFO to replace oldest entry when full
     void insert(unsigned int vpn, unsigned int frame) {
-        // First check if VPN already exists — update it
+        // First check if VPN already exists, update it
         for (int i = 0; i < size; i++) {
             if (entries[i].valid && entries[i].vpn == vpn) {
                 entries[i].frameNumber = frame;
@@ -64,7 +60,7 @@ public:
         nextSlot = (nextSlot + 1) % size;   // wrap around
     }
 
-    // ── 3. Invalidate a TLB entry (called when page evicted) ─
+    //3. Invalidate a TLB entry (called when page evicted)
     void invalidate(unsigned int vpn) {
         for (int i = 0; i < size; i++) {
             if (entries[i].valid && entries[i].vpn == vpn) {
@@ -75,7 +71,7 @@ public:
         }
     }
 
-    // ── 4. Clear entire TLB ──────────────────────────────────
+    //4. Clear entire TLB 
     void flush() {
         for (int i = 0; i < size; i++) {
             entries[i].valid = false;
@@ -85,9 +81,9 @@ public:
         nextSlot = 0;
     }
 
-    // ── 5. Print TLB contents ────────────────────────────────
+    //5. Print TLB contents 
     void printTLB() {
-        cout << "\n  ---- TLB Contents ----\n";
+        cout << "\n   TLB Contents \n";
         cout << "  Slot | Valid | VPN | Frame\n";
         cout << "  --------------------------\n";
         for (int i = 0; i < size; i++) {
