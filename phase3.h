@@ -28,8 +28,8 @@ public:
         cfg = c;
     }
 
-    // 1. Convert hex string to unsigned int
-    //  "0x1ABC" or "1ABC" = 6844
+    // 1. Convert hex string to unsigned int 
+    //  "0x1ABC" or "1ABC"  = 6844
     bool hexToInt(string hexStr, unsigned int& result) {
 
         // Remove "0x" or "0X" prefix if present
@@ -52,22 +52,22 @@ public:
         return true;
     }
 
-    // 2. Check if address is within physical RAM 
+    //  2. Check if address is within physical RAM 
     bool isInBounds(unsigned int address) {
         return address < cfg.physicalRamSize;
     }
 
-    //3. Check if operation is R or W
+    //  3. Check if operation is R or W 
     bool isValidOp(string op) {
         return (op == "R" || op == "W");
     }
 
-    // 4. Parse one line into a TraceEntry
+    //  4. Parse one line into a TraceEntry 
     TraceEntry parseLine(string line) {
         TraceEntry entry;
 
         // Find space between address and operation
-        int spacePos = line.find(' ');
+        int spacePos = (int)line.find(' ');
         if (spacePos == -1) {
             cout << "  ERROR!! Bad format: " << line << "\n";
             return entry;
@@ -102,7 +102,7 @@ public:
         return entry;
     }
 
-    //5. Read and validate entire trace file
+    //5. Read and validate entire trace file 
     void validateFile(string filename) {
         ifstream file(filename);
 
@@ -129,11 +129,12 @@ public:
         printStats();
     }
 
-    // 6. Print validation summary
+    //6. Print validation summary 
     void printStats() {
-        cout << "\n   Trace Validation Summary \n";
+        cout << "\n...Trace Validation Summary...\n";
         cout << "  Total Lines   : " << totalLines << "\n";
         cout << "  Valid Lines   : " << validLines << "\n";
         cout << "  Invalid Lines : " << invalidLines << "\n";
+        cout << "  ......................................\n";
     }
 };
