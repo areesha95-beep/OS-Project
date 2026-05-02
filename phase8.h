@@ -72,18 +72,21 @@ public:
         return (double)pageFaults / totalAccesses * 100.0;
     }
     void printReport() {
-        cout << "       PERFORMANCE REPORT               \n";
-        cout << "  Total Accesses  : " << totalAccesses << "\n";
-        cout << "  TLB Hits        : " << tlbHits       << "\n";
-        cout << "  TLB Misses      : " << tlbMisses     << "\n";
-        cout << "  Page Hits       : " << pageHits      << "\n";
-        cout << "  Page Faults     : " << pageFaults    << "\n";
-        cout << "  Disk Reads      : " << diskReads     << "\n";
-        cout << "  Disk Writes     : " << diskWrites    << "\n";
-        cout << "\n";
-        cout << "  TLB Hit Rate    : " << tlbHitRate()    << " %\n";
-        cout << "  Page Fault Rate : " << pageFaultRate() << " %\n";
-        cout << "  Total Time      : " << totalTime << " ns\n";
-        cout << "  EAT             : " << computeEAT() << " ns\n";
-    }
+    cout << "\n========================================\n";
+    cout << "       PERFORMANCE REPORT               \n";
+    cout << "========================================\n";
+    cout << "  Total Accesses  : " << totalAccesses << "\n";
+    cout << "  TLB Hits        : " << tlbHits << "\n";
+    cout << "  TLB Misses      : " << tlbMisses << "\n";
+    cout << "  Page Hits       : " << pageHits << "\n";
+    cout << "  Page Faults     : " << pageFaults << "\n";
+    cout << "  Disk Reads      : " << diskReads << "\n";
+    cout << "  Disk Writes     : " << diskWrites << "\n";
+    cout << "----------------------------------------\n";
+    cout << "  TLB Hit Rate    : " << tlbHitRate() << " %\n";
+    cout << "  Page Fault Rate : " << pageFaultRate() << " %\n";
+    cout << "  Total Time      : " << totalTime << " ns\n";
+    cout << "  EAT             : " << computeEAT() << " ns\n";
+    cout << "========================================\n\n";
+}
 };
