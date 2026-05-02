@@ -80,13 +80,15 @@ public:
 
     //8. Print entire page table
     void printTable() {
-        cout << "\n  Page Table \n";
-        cout << "  VPN  | Valid | Dirty | Frame\n";
-        for (auto& row : table) {
-            cout << "  " << row.first
-                << "     |   " << row.second.valid
-                << "   |   " << row.second.dirty
-                << "   |   " << row.second.frameNumber << "\n";
-        }
+    cout << "\n  .... Page Table ....\n";
+    cout << "  VPN  | Valid | Dirty | Frame\n";
+    cout << "  ............................\n";
+    for (auto& row : table) {
+        cout << "  " << row.first
+            << "     |   " << row.second.valid
+            << "   |   " << row.second.dirty
+            << "   |   " << row.second.frameNumber << "\n";
     }
+    cout << "  .........................\n\n";
+}
 };
