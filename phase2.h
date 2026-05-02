@@ -20,7 +20,7 @@ public:
         return address >> cfg.offsetBits;
     }
 
-    //2. Extract Offset from virtual address 
+    //,2. Extract Offset from virtual address
     unsigned int getOffset(unsigned int address) {
         return address & cfg.offsetMask;
     }
@@ -29,14 +29,14 @@ public:
     bool isValid(unsigned int address) {
         unsigned int maxAddress = cfg.physicalRamSize - 1;
         if (address > maxAddress) {
-            cout << "  [ERROR] Address 0x" << hex << address
+            cout << "  ERROR!! Address 0x" << hex << address
                 << " is OUT OF BOUNDS. Max allowed: 0x" << maxAddress << dec << "\n";
             return false;
         }
         return true;
     }
 
-    // 4. Print the split result 
+    //4. Print the split result 
     void printSplit(unsigned int address) {
         cout << "  Virtual Address : 0x" << hex << address << "\n";
         cout << "  VPN             : " << dec << getVPN(address)
