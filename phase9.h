@@ -133,7 +133,7 @@ public:
         string line;
         while (getline(file, line)) {
             if (line.empty()) continue;
-            int spacePos = line.find(' ');
+            int spacePos = (int)line.find(' ');
             if (spacePos == -1) continue;
             string hexStr = line.substr(0, spacePos);
             string opStr = line.substr(spacePos + 1);
