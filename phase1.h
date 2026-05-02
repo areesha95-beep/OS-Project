@@ -54,7 +54,7 @@ public:
     }
 
     void computeDerived() {
-        cfg.frameCount = cfg.physicalRamSize / cfg.pageSize;
+        cfg.frameCount = (unsigned int)(cfg.physicalRamSize / cfg.pageSize);
         cfg.offsetBits = (unsigned int)log2(cfg.pageSize);
         cfg.offsetMask = cfg.pageSize - 1;
     }
@@ -67,7 +67,7 @@ public:
         cout << "RAM Latency   : " << cfg.ramLatency << " ns\n";
         cout << "Disk Latency  : " << cfg.diskLatency << " ns\n";
         cout << "Algorithm     : " << cfg.replacementAlgo << "\n";
-        cout << "--- Derived ---\n";
+        cout << " Derived \n";
         cout << "Frame Count   : " << cfg.frameCount << "\n";
         cout << "Offset Bits   : " << cfg.offsetBits << "\n";
         cout << "Offset Mask   : 0x" << hex << cfg.offsetMask << dec << "\n";
