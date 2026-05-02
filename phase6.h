@@ -100,11 +100,12 @@ public:
     }
 
     //5. Print free frame stats 
-    void printStats() {
-        cout << "\n   Page Fault Handler Stats \n";
-        cout << "  Page Faults  : " << pageFaults << "\n";
-        cout << "  Disk Reads   : " << diskReads << "\n";
-        cout << "  Disk Writes  : " << diskWrites << "\n";
-        cout << "  Free Frames  : " << freeFrames.size() << "\n";
-    }
+   void printStats() {
+    cout << "\n  .... Page Fault Handler Stats ....\n";
+    cout << "  Page Faults  : " << pageFaults << "\n";
+    cout << "  Disk Reads   : " << diskReads << "\n";
+    cout << "  Disk Writes  : " << diskWrites << "\n";
+    cout << "  Free Frames  : " << freeFrames.size() << "\n";
+    cout << "  ...................................\n\n";
+}
 };
