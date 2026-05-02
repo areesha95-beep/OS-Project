@@ -59,7 +59,7 @@ public:
         cfg.offsetMask = cfg.pageSize - 1;
     }
     void printConfig() {
-        cout << "\n====== SYSTEM CONFIG ======\n";
+        cout << "\n SYSTEM CONFIG \n";
         cout << "Physical RAM  : " << cfg.physicalRamSize / (1024 * 1024) << " MB\n";
         cout << "Page Size     : " << cfg.pageSize / 1024 << " KB\n";
         cout << "TLB Size      : " << cfg.tlbSize << " entries\n";
@@ -71,6 +71,5 @@ public:
         cout << "Frame Count   : " << cfg.frameCount << "\n";
         cout << "Offset Bits   : " << cfg.offsetBits << "\n";
         cout << "Offset Mask   : 0x" << hex << cfg.offsetMask << dec << "\n";
-        cout << "===========================\n\n";
     }
 };
